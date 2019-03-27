@@ -30,7 +30,7 @@ ENV PATH $PATH:$JAVA_HOME/bin:.
 
 RUN git clone --depth 1 --single-branch --branch develop https://github.com/apache/directory-scimple.git scimple \
     && cd scimple \
-    && mvn clean package -T 10
+    && mvn clean install -T 10 -DskipTests
 
 RUN chmod 750 /opt/jre-home/bin/java;
 
