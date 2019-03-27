@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build --tag="scimple:v1" .
+docker build --tag="mmoayyed/scimple:v1" .
