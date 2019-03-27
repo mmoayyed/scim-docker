@@ -2,8 +2,6 @@ FROM centos:centos7
 
 MAINTAINER Misagh Moayyed
 
-ENV PATH=$PATH:$JRE_HOME/bin
-
 RUN yum -y install maven wget tar unzip git \
     && yum -y clean all
 
@@ -26,7 +24,7 @@ RUN cd / \
     && rm ZuluJCEPolicies.zip;
 
 ENV JAVA_HOME /opt/jre-home
-ENV PATH $PATH:$JAVA_HOME/bin:.
+ENV PATH $PATH:$MAVEN_HOME/bin:$JAVA_HOME/bin:.
 
 RUN git clone --depth 1 --single-branch --branch develop https://github.com/apache/directory-scimple.git scimple
 
