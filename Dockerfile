@@ -28,10 +28,12 @@ RUN cd / \
 ENV JAVA_HOME /opt/jre-home
 ENV PATH $PATH:$JAVA_HOME/bin:.
 
-RUN git clone --depth 1 --single-branch --branch develop https://github.com/apache/directory-scimple.git scimple \
-    && cd scimple \
-    && mvn clean install -T 10 -DskipTests \
-    && mvn --version \
+RUN git clone --depth 1 --single-branch --branch develop https://github.com/apache/directory-scimple.git scimple
+
+RUN cd scimple \
+    && mvn clean install -T 10 -DskipTests
+
+RUN mvn --version \
     && echo $MAVEN_HOME \
     && echo $M2_HOME
 
