@@ -24,6 +24,7 @@ RUN cd / \
     && rm ZuluJCEPolicies.zip;
 
 ENV JAVA_HOME /opt/jre-home
+ENV MAVEN_HOME /usr/share/maven
 ENV PATH $PATH:$MAVEN_HOME/bin:$JAVA_HOME/bin:.
 
 RUN git clone --depth 1 --single-branch --branch develop https://github.com/apache/directory-scimple.git scimple
@@ -32,8 +33,7 @@ RUN cd scimple \
     && mvn clean install -T 10 -DskipTests
 
 RUN mvn --version \
-    && echo $MAVEN_HOME \
-    && echo $M2_HOME
+    && echo $MAVEN_HOME
 
 COPY run.sh scimple
 
