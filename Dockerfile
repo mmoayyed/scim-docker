@@ -32,10 +32,13 @@ RUN git clone --depth 1 --single-branch --branch develop https://github.com/apac
     && cd scimple \
     && mvn clean install -T 10 -DskipTests
 
-RUN chmod 750 /opt/jre-home/bin/java;
+COPY run.sh scimple
+
+RUN chmod 750 /opt/jre-home/bin/java \
+    && chmod 750 cas-scimple/run.sh;
 
 EXPOSE 8080
 
 WORKDIR /scimple/scim-server/scim-server-example/scim-server-memory
 
-CMD ["mvn tomee:run"]
+CMD ["/scimple/run.sh"]
