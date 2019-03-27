@@ -35,7 +35,7 @@ RUN git clone --depth 1 --single-branch --branch develop https://github.com/apac
 COPY run.sh scimple
 
 RUN chmod 750 /opt/jre-home/bin/java \
-    && chmod 750 cas-scimple/run.sh;
+    && chmod 750 /scimple/run.sh;
 
 EXPOSE 8080
 
